@@ -1,4 +1,14 @@
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=$HOME/vimfiles/bundle/Vundle.vim
+call vundle#begin('$HOME/vimfiles/bundle/')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kkoenig/wimproved.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+set nu
+
 let $LANG='en'
 set langmenu=en
 set directory=.,$TEMP
@@ -12,6 +22,15 @@ autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $DESKTOP
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 
 set autochdir
 
