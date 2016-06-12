@@ -17,11 +17,14 @@ set lines=30 columns=120
 colo evening 
 set autoindent
 
+let mapleader="\<Space>"
+nnoremap <Leader>w :w<CR>
+
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
-autocmd VIMEnter * cd $DESKTOP
+autocmd VIMEnter * cd $WS
 
 set tabstop=4
 set shiftwidth=4
@@ -32,7 +35,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-set autochdir
 
 set encoding=utf-8
 set fileencoding=utf-8
