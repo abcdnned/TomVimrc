@@ -19,6 +19,11 @@ set autoindent
 
 let mapleader="\<Space>"
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>p :!python %<CR>
+nnoremap <Leader>e :e 
+nnoremap <Leader>b :b <c-d>
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>r :e $VIMRC<CR>
 
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
