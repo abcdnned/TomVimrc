@@ -17,6 +17,8 @@ set lines=30 columns=120
 colo evening 
 set autoindent
 
+set autoread
+
 let mapleader="\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>p :!python %<CR>
