@@ -51,8 +51,7 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=b
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+
 set diffexpr=MyDiff()
 function MyDiff()
   let opt = '-a --binary '
