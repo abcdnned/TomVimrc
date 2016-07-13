@@ -17,15 +17,23 @@ set lines=30 columns=120
 colo evening 
 set autoindent
 
+set autowrite
+
+" user command "
+command -range Pyacom :<line1>,<line2>s/^/#/  " python add comments
+command -range Pydcom :<line1>,<line2>s/#//  " python delete comments
+
+command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines which contains print
+
 set autoread
 
 let mapleader="\<Space>"
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>p :!python %<CR>
-nnoremap <Leader>e :e 
-nnoremap <Leader>b :b <c-d>
-nnoremap <Leader>n :bnext<CR>
-nnoremap <Leader>r :e $VIMRC<CR>
+noremap <Leader>w :w<CR>
+noremap <Leader>p :!python %<CR>
+noremap <Leader>e :e 
+noremap <Leader>b :b <c-d>
+noremap <Leader>n :bnext<CR>
+noremap <Leader>r :e $VIMRC<CR>
 
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
