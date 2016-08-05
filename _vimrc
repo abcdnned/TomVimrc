@@ -34,6 +34,7 @@ noremap <Leader>e :e
 noremap <Leader>b :b <c-d>
 noremap <Leader>n :bnext<CR>
 noremap <Leader>r :e $VIMRC<CR>
+noremap <Leader>f :WToggleFullscreen<CR>
 
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
