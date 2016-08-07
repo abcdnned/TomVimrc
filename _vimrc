@@ -31,8 +31,8 @@ let mapleader="\<Space>"
 noremap <Leader>w :w<CR>
 noremap <Leader>p :!python %<CR>
 noremap <Leader>e :e 
-noremap <Leader>b :b <c-d>
 noremap <Leader>n :bnext<CR>
+noremap <Leader>p :bprevious<CR>
 noremap <Leader>r :e $VIMRC<CR>
 noremap <Leader>f :WToggleFullscreen<CR>
 
