@@ -13,7 +13,7 @@ filetype plugin indent on    " required
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/chen/snips","C:/Users/chen/vimfiles/bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["C:/Users/Chen/snips","bundle/vim-snippets/UltiSnips"]
 
 set nu
 
