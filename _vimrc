@@ -17,6 +17,8 @@ let g:UltiSnipsSnippetDirectories=["C:/Users/Chen/snips","bundle/vim-snippets/Ul
 
 set nu
 
+"set dictionary+=/usr/share/dict/words
+
 let $LANG='en'
 set langmenu=en
 set directory=.,$TEMP
@@ -37,18 +39,21 @@ set autoread
 
 let mapleader="\<Space>"
 noremap <Leader>w :w<CR>
-noremap <Leader>p :!python %<CR>
-noremap <Leader>e :e 
+noremap <Leader>e :w \| e 
 noremap <Leader>n :bnext<CR>
 noremap <Leader>N :bprevious<CR>
+noremap <Leader>q :q<CR>
 noremap <Leader>r :e $VIMRC<CR>
 noremap <Leader>f :WToggleFullscreen<CR>
+noremap <CR> o<ESC>k
+noremap <S-Enter> O<ESC>j
 
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $WS
+autocmd VIMEnter * e writedown
 
 set tabstop=4
 set shiftwidth=4
