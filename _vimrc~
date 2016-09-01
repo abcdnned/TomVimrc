@@ -39,8 +39,12 @@ let g:polyglot_disabled = ['python']
 set nu
 syntax on
 
+<<<<<<< HEAD
 "let g:ycm_global_ycm_extra_conf = 'C:/Users/tom.yang/ycm/.ycm_extra_conf.py'
+
+=======
 "set dictionary+=/usr/share/dict/words
+>>>>>>> 77d996c563b8729bcb37cce966eb940015faf187
 
 let $LANG='en'
 set langmenu=en
