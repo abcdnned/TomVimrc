@@ -1,3 +1,21 @@
+python << EOF
+import os
+import re
+path = os.environ['PATH'].split(';')
+
+def contains_msvcr_lib(folder):
+    try:
+        for item in os.listdir(folder):
+            if re.match(r'msvcr\d+\.dll', item):
+                return True
+    except:
+        pass
+    return False
+
+path = [folder for folder in path if not contains_msvcr_lib(folder)]
+os.environ['PATH'] = ';'.join(path)
+EOF
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=$HOME/vimfiles/bundle/Vundle.vim
@@ -7,18 +25,22 @@ Plugin 'kkoenig/wimproved.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<c-s>"
+let g:UltiSnipsJumpForwardTrigger = "<c-s>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
 let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
 set nu
 syntax on
+
+"let g:ycm_global_ycm_extra_conf = 'C:/Users/tom.yang/ycm/.ycm_extra_conf.py'
+
 
 let $LANG='en'
 set langmenu=en
@@ -33,6 +55,7 @@ set autowrite
 " user command "
 command -range Pyacom :<line1>,<line2>s/^/#/  " python add comments
 command -range Pydcom :<line1>,<line2>s/#//  " python delete comments
+command ReloadVimrc :source $HOME/_vimrc
 
 command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines which contains print
 
