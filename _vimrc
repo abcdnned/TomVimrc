@@ -1,21 +1,3 @@
-python << EOF
-import os
-import re
-path = os.environ['PATH'].split(';')
-
-def contains_msvcr_lib(folder):
-    try:
-        for item in os.listdir(folder):
-            if re.match(r'msvcr\d+\.dll', item):
-                return True
-    except:
-        pass
-    return False
-
-path = [folder for folder in path if not contains_msvcr_lib(folder)]
-os.environ['PATH'] = ';'.join(path)
-EOF
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=$HOME/vimfiles/bundle/Vundle.vim
@@ -24,8 +6,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kkoenig/wimproved.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-polyglot'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ervandew/supertab'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,14 +17,12 @@ filetype plugin indent on    " required
 let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/netissnips","C:/Users/tom.yang/snips","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
 set nu
 syntax on
-
-"let g:ycm_global_ycm_extra_conf = 'C:/Users/tom.yang/ycm/.ycm_extra_conf.py'
-"set dictionary+=/usr/share/dict/words
 
 let $LANG='en'
 set langmenu=en
@@ -55,7 +37,6 @@ set autowrite
 " user command "
 command -range Pyacom :<line1>,<line2>s/^/#/  " python add comments
 command -range Pydcom :<line1>,<line2>s/#//  " python delete comments
-command ReloadVimrc :source $HOME/_vimrc
 
 command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines which contains print
 
@@ -77,7 +58,10 @@ autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $WS
-autocmd VIMEnter * e writedown
+
+"open writedown file when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | e $WS/writedown | endif
 
 set tabstop=4
 set shiftwidth=4
