@@ -6,7 +6,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kkoenig/wimproved.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -14,11 +13,9 @@ filetype plugin indent on    " required
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","bundle/vim-snippets/UltiSnips"]
-let g:polyglot_disabled = ['python']
+let g:UltiSnipsSnippetDirectories=["C:/Users/Chen/snips","bundle/vim-snippets/UltiSnips"]
 
 set nu
-syntax on
 
 "set dictionary+=/usr/share/dict/words
 
@@ -56,7 +53,6 @@ autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $WS
-autocmd VIMEnter * e writedown
 
 set tabstop=4
 set shiftwidth=4
