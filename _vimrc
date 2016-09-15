@@ -6,18 +6,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kkoenig/wimproved.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'vim-polyglot'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ervandew/supertab'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<c-s>"
+let g:UltiSnipsJumpForwardTrigger = "<c-s>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
+let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=["C:/Users/Chen/snips","bundle/vim-snippets/UltiSnips"]
+let g:polyglot_disabled = ['python']
 
 set nu
-
-"set dictionary+=/usr/share/dict/words
 
 let $LANG='en'
 set langmenu=en
@@ -53,6 +57,10 @@ autocmd GUIEnter * silent! WToggleClean
 autocmd GUIEnter * WToggleFullscreen
 autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $WS
+
+"open writedown file when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | e $WS/writedown | endif
 
 set tabstop=4
 set shiftwidth=4
