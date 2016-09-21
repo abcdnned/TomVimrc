@@ -10,16 +10,57 @@ Plugin 'vim-polyglot'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-bufferline'
+Plugin 'fs111/pydoc.vim'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" customer leader
+let mapleader="\<Space>"
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
 let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/netissnips","C:/Users/tom.yang/snips","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","C:/Users/tom.yang/snips/note","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
+
+"vim-airline configuration
+set laststatus=2
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='molokai'
+
+"bufferline configuration
+let g:bufferline_rotate = 1
+
+"syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E231,E225,E226,E265,E302,E261,E501,E203'
+autocmd VimEnter * SyntasticToggleMode
+noremap <F7> :SyntasticCheck<CR>
+
+"pydoc configuration
+let g:pydoc_cmd = "C:/Python27/Lib/pydoc.py"
+
+"Wimproved configuration
+autocmd GUIEnter * silent! WToggleClean
+autocmd GUIEnter * WToggleFullscreen
+autocmd GUIEnter * WSetAlpha 200
+autocmd VIMEnter * cd $WS
+noremap <Leader>f :WToggleFullscreen<CR>
 
 set nu
 syntax on
@@ -42,22 +83,15 @@ command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines wh
 
 set autoread
 
-let mapleader="\<Space>"
 noremap <Leader>w :w<CR>
 noremap <Leader>e :w \| e 
 noremap <Leader>n :bnext<CR>
 noremap <Leader>N :bprevious<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>r :e $VIMRC<CR>
-noremap <Leader>f :WToggleFullscreen<CR>
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
 
-"fullscreen setting
-autocmd GUIEnter * silent! WToggleClean
-autocmd GUIEnter * WToggleFullscreen
-autocmd GUIEnter * WSetAlpha 200
-autocmd VIMEnter * cd $WS
 
 "open writedown file when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
