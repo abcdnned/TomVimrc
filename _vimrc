@@ -10,6 +10,7 @@ Plugin 'vim-polyglot'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -18,7 +19,7 @@ let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
 let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/Chen/snips","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["C:/gitrepo/tomsnips","c:/gitrepo/tomsnips/note","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
 set nu
