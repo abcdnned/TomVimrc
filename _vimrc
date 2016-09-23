@@ -41,19 +41,6 @@ let g:airline_theme='molokai'
 "bufferline configuration
 let g:bufferline_rotate = 1
 
-"syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E231,E225,E226,E265,E302,E261,E501,E203'
-autocmd VimEnter * SyntasticToggleMode
-noremap <F7> :SyntasticCheck<CR>
-
 "pydoc configuration
 let g:pydoc_cmd = "C:/Python27/Lib/pydoc.py"
 
