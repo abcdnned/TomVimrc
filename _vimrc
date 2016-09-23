@@ -56,7 +56,7 @@ autocmd VIMEnter * cd $WS
 noremap <Leader>f :WToggleFullscreen<CR>
 
 "vim-notes configuration
-:let g:notes_directories = ['C:\Users\tom.yang\snips\note']
+let g:notes_directories = ['C:/Users/tom.yang/snips/note']
 
 
 set nu
