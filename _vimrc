@@ -11,6 +11,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,6 +54,9 @@ noremap <Leader>r :e $VIMRC<CR>
 noremap <Leader>f :WToggleFullscreen<CR>
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
+
+"vim-notes configuration
+:let g:notes_directories = ['C:\gitrepo\tomsnips\note']
 
 "fullscreen setting
 autocmd GUIEnter * silent! WToggleClean
