@@ -21,7 +21,9 @@ Plugin 'xolox/vim-notes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
 syntax on
+
 
 " customer leader
 let mapleader="\<Space>"
@@ -55,6 +57,7 @@ noremap <Leader>f :WToggleFullscreen<CR>
 
 "vim-notes configuration
 :let g:notes_directories = ['C:\Users\tom.yang\snips\note']
+
 
 set nu
 
