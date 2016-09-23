@@ -14,7 +14,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'fs111/pydoc.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -27,7 +29,7 @@ let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
 let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","C:/Users/tom.yang/snips/note","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
 "vim-airline configuration
@@ -63,7 +65,6 @@ autocmd VIMEnter * cd $WS
 noremap <Leader>f :WToggleFullscreen<CR>
 
 set nu
-syntax on
 
 let $LANG='en'
 set langmenu=en
@@ -92,6 +93,14 @@ noremap <Leader>r :e $VIMRC<CR>
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
 
+"vim-notes configuration
+:let g:notes_directories = ['C:\gitrepo\tomsnips\note']
+
+"fullscreen setting
+autocmd GUIEnter * silent! WToggleClean
+autocmd GUIEnter * WToggleFullscreen
+autocmd GUIEnter * WSetAlpha 200
+autocmd VIMEnter * cd $WS
 
 "open writedown file when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
