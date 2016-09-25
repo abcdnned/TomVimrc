@@ -15,8 +15,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'fs111/pydoc.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
+Plugin 'iwataka/airnote.vim'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -24,6 +24,13 @@ filetype plugin indent on    " required
 
 syntax on
 
+" supertab configuration
+" let g:SuperTabDefaultCompletionType = \"context\"
+
+" jedi-vim configuration
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = "<c-n>"
+let g:jedi#rename_command="<leader>pr"
 
 " customer leader
 let mapleader="\<Space>"
@@ -31,7 +38,7 @@ let mapleader="\<Space>"
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-w>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 let g:UltiSnipsListSnippets="<c-l>"
 
 let g:UltiSnipsSnippetDirectories=["C:/gitrepo/tomsnips","c:/gitrepo/tomsnips/note","bundle/vim-snippets/UltiSnips"]
@@ -58,8 +65,10 @@ autocmd GUIEnter * WSetAlpha 200
 autocmd VIMEnter * cd $WS
 noremap <Leader>f :WToggleFullscreen<CR>
 
-"vim-notes configuration
-let g:notes_directories = ['C:\gitrepo\tomsnips\note']
+"airnote configuration
+let g:airnote_path = expand('C:\gitrepo\tomsnips\note')
+let g:airnote_suffix = ''
+let g:airnote_date_format = ''
 
 
 set nu
@@ -82,13 +91,11 @@ command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines wh
 
 set autoread
 
-
-noremap <Leader>w :w<CR>
-noremap <Leader>e :w \| e 
-noremap <Leader>n :bnext<CR>
-noremap <Leader>N :bprevious<CR>
-noremap <Leader>q :q<CR>
-noremap <Leader>r :e $VIMRC<CR>
+noremap <leader>r :w! \| e $VIMRC<CR>
+noremap <leader>w :w!<CR>
+noremap <left> :bprevious<CR>
+noremap <right> :bNext<CR>
+noremap <leader>e :w! \| e 
 
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
