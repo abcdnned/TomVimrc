@@ -17,6 +17,7 @@ Plugin 'fs111/pydoc.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'iwataka/airnote.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-scripts/VimIM'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,7 +42,7 @@ let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 let g:UltiSnipsListSnippets="<c-l>"
 
-let g:UltiSnipsSnippetDirectories=["C:/gitrepo/tomsnips","c:/gitrepo/tomsnips/note","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
 
@@ -66,7 +67,7 @@ autocmd VIMEnter * cd $WS
 noremap <Leader>f :WToggleFullscreen<CR>
 
 "airnote configuration
-let g:airnote_path = expand('C:\gitrepo\tomsnips\note')
+let g:airnote_path = expand('C:/Users/tom.yang/snips/note')
 let g:airnote_suffix = ''
 let g:airnote_date_format = ''
 
