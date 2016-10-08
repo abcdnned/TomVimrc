@@ -16,7 +16,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'fs111/pydoc.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'iwataka/airnote.vim'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,6 +57,7 @@ let g:airline_theme='molokai'
 
 "bufferline configuration
 let g:bufferline_rotate = 1
+let g:bufferline_echo = 0
 
 "pydoc configuration
 let g:pydoc_cmd = "C:/Python27/Lib/pydoc.py"
@@ -69,7 +70,7 @@ autocmd VIMEnter * cd $WS
 noremap <Leader>f :WToggleFullscreen<CR>
 
 "airnote configuration
-let g:airnote_path = expand('C:\gitrepo\tomsnips\note')
+let g:airnote_path = expand('C:/Users/tom.yang/snips/note')
 let g:airnote_suffix = ''
 let g:airnote_date_format = ''
 
@@ -96,8 +97,8 @@ set autoread
 
 noremap <leader>r :w! \| e $VIMRC<CR>
 noremap <leader>w :w!<CR>
-noremap <left> :bprevious<CR>
-noremap <right> :bNext<CR>
+noremap <left> :bNext<CR>
+noremap <right> :bnext<CR>
 noremap <leader>e :w! \| e 
 
 noremap <CR> o<ESC>k
