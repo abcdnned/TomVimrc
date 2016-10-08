@@ -40,11 +40,14 @@ let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 let g:UltiSnipsListSnippets="<c-l>"
-
 let g:UltiSnipsSnippetDirectories=["C:/gitrepo/tomsnips","c:/gitrepo/tomsnips/note","bundle/vim-snippets/UltiSnips"]
+
+"polyglot configuration
 let g:polyglot_disabled = ['python']
 
 
+"ctrlp configuration
+let g:ctrlp_working_path_mode = 0
 
 "vim-airline configuration
 set laststatus=2
