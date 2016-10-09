@@ -17,6 +17,7 @@ Plugin 'fs111/pydoc.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'iwataka/airnote.vim'
 "Plugin 'davidhalter/jedi-vim'
+Plugin 'mihaifm/bufstop'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -28,9 +29,9 @@ syntax on
 " let g:SuperTabDefaultCompletionType = \"context\"
 
 " jedi-vim configuration
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = "<c-n>"
-let g:jedi#rename_command="<leader>pr"
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#completions_command = "<c-n>"
+"let g:jedi#rename_command="<leader>pr"
 
 " customer leader
 let mapleader="\<Space>"
@@ -44,7 +45,8 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","bundle/vim-snippets/UltiSnips"]
 let g:polyglot_disabled = ['python']
 
-
+"bufstop configuration
+let g:BufstopAutoSpeedToggle = 1
 
 "vim-airline configuration
 set laststatus=2
@@ -53,7 +55,7 @@ let g:airline_right_sep=''
 let g:airline_theme='molokai'
 
 "bufferline configuration
-let g:bufferline_rotate = 1
+let g:bufferline_rotate = 0
 let g:bufferline_echo = 0
 
 "pydoc configuration
