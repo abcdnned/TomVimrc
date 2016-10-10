@@ -41,12 +41,16 @@ let g:UltiSnipsExpandTrigger = "<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-s>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 let g:UltiSnipsListSnippets="<c-l>"
-
 let g:UltiSnipsSnippetDirectories=["C:/Users/tom.yang/snips","C:/Users/tom.yang/snips/netissnips","bundle/vim-snippets/UltiSnips"]
+
+"polyglot configuration
 let g:polyglot_disabled = ['python']
 
 "bufstop configuration
 let g:BufstopAutoSpeedToggle = 1
+
+"ctrlp configuration
+let g:ctrlp_working_path_mode = 0
 
 "vim-airline configuration
 set laststatus=2
@@ -109,8 +113,10 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | e $WS/writedown | endif
 
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set backspace=indent,eol,start
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
