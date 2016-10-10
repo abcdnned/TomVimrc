@@ -26,11 +26,11 @@ filetype plugin indent on    " required
 syntax on
 
 " supertab configuration
-" let g:SuperTabDefaultCompletionType = \"context\"
+let g:SuperTabDefaultCompletionType = "context"
 
 " jedi-vim configuration
 "let g:jedi#popup_on_dot = 0
-"let g:jedi#completions_command = "<c-n>"
+"let g:jedi#completions_command = <c-n>"
 "let g:jedi#rename_command="<leader>pr"
 
 " customer leader
@@ -103,6 +103,7 @@ noremap <leader>w :w!<CR>
 noremap <left> :bNext<CR>
 noremap <right> :bnext<CR>
 noremap <leader>e :w! \| e 
+noremap <leader>/ :s/\\/\//g<CR>
 
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
@@ -123,6 +124,8 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+set backupdir=$VIMBACK
+set directory=$VIMBACK
 
 set encoding=utf-8
 set fileencoding=utf-8
