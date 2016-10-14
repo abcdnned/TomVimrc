@@ -100,10 +100,14 @@ set autoread
 
 noremap <leader>r :w! \| e $VIMRC<CR>
 noremap <leader>w :w!<CR>
-noremap <left> :bNext<CR>
-noremap <right> :bnext<CR>
 noremap <leader>e :w! \| e 
 noremap <leader>/ :s/\\/\//g<CR>
+
+"highlight current line
+nnoremap <silent> <leader>hl ml:execute 'match Search /\%'.line('.').'l/'<CR>
+"remove all hightlight
+nnoremap <silent> <leader>hc /pleasedisablehighlightthanks<CR>
+
 
 noremap <CR> o<ESC>k
 noremap <S-Enter> O<ESC>j
