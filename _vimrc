@@ -16,8 +16,12 @@ Plugin 'bling/vim-bufferline'
 Plugin 'fs111/pydoc.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'iwataka/airnote.vim'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'mihaifm/bufstop'
+Plugin 'Dinduks/vim-java-get-set'
+Plugin 'vim-scripts/DrawIt'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'davidhalter/jedi-vim'
+"Plugin 'jvenant/vim-java-imports'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -87,12 +91,11 @@ winpos 10 10
 set lines=30 columns=120 
 colo evening 
 set autoindent
-
+let g:netrw_preview = 1
 set autowrite
 
 " user command "
-command -range Pyacom :<line1>,<line2>s/^/#/  " python add comments
-command -range Pydcom :<line1>,<line2>s/#//  " python delete comments
+cabbr <expr> %% expand("%:p:h")
 
 command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines which contains print
 
@@ -102,6 +105,7 @@ noremap <leader>r :w! \| e $VIMRC<CR>
 noremap <leader>w :w!<CR>
 noremap <leader>e :w! \| e 
 noremap <leader>/ :s/\\/\//g<CR>
+noremap <leader>m :CtrlPMRUFiles<CR>
 
 "highlight current line
 nnoremap <silent> <leader>hl ml:execute 'match Search /\%'.line('.').'l/'<CR>
