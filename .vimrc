@@ -5,19 +5,35 @@ call vundle#begin('$HOME/.vim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-"Plugin 'vim-polyglot'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 Plugin 'iwataka/airnote.vim'
 Plugin 'mihaifm/bufstop'
 Plugin 'Dinduks/vim-java-get-set'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'abcdnned/vim-java-manager'
+Plugin 'abcdnned/vim-java-commenter'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'othree/html5.vim'
+Plugin 'abcdnned/maven-compiler.vim'
+Plugin 'akhaku/vim-java-unused-imports'
+Plugin 'abcdnned/vim-hide-show'
+Plugin 'abcdnned/vim-string-search'
+Plugin 'abcdnned/vim-playchips'
+Plugin 'arecarn/vim-selection'
+Plugin 'arecarn/vim-crunch'
+Plugin 'katono/rogue.vim'
+Plugin 'uguu-org/vim-matrix-screensaver'
+Plugin 'abcdnned/vim-random'
+"Plugin 'bling/vim-bufferline'
+"Plugin 'vim-scripts/showhide.vim'
+"Plugin 'vim-polyglot'
+"Plugin 'vim-scripts/jcommenter.vim'
 "Plugin 'davidhalter/jedi-vim'
 "Plugin 'jvenant/vim-java-imports'
 
@@ -26,6 +42,13 @@ filetype plugin indent on    " required
 
 
 syntax on
+
+set hlsearch
+set nowrapscan
+
+" maven compiler configuration
+auto Filetype java compiler mvn
+auto Filetype pom compiler mvn
 
 " supertab configuration
 let g:SuperTabDefaultCompletionType = "context"
@@ -38,15 +61,16 @@ let g:SuperTabDefaultCompletionType = "context"
 " customer leader
 let mapleader="\<Space>"
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<c-s>"
-let g:UltiSnipsJumpForwardTrigger = "<c-s>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+
+" Trigger configuration. Do not use <Tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger = "<c-\\>"
+let g:UltiSnipsJumpForwardTrigger = "<c-\\>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-Tab>"
 let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsSnippetDirectories=["$HOME/gitrepo/tomsnips","$HOME/gitrepo/tomsnips/netissnips","$HOME/.vim/bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["/home/tom/gitrepo/tomsnips","/home/tom/gitrepo/tomsnips/netissnips","/home/tom/.vim/bundle/vim-snippets/UltiSnips"]
 
 "polyglot configuration
-"let g:polyglot_disabled = ['python']
+"let g:polyglot_disabled = ['scala']
 
 "bufstop configuration
 let g:BufstopAutoSpeedToggle = 1
@@ -56,12 +80,15 @@ let g:ctrlp_working_path_mode = 0
 
 "vim-airline configuration
 set laststatus=2
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 let g:airline_theme='molokai'
+let g:airline_section_c=''
+let g:airline_section_error=''
+let g:airline_section_warning=''
 
 "bufferline configuration
-let g:bufferline_rotate = 0
+let g:bufferline_rotate = 1
 let g:bufferline_echo = 0
 
 
@@ -77,8 +104,8 @@ let $LANG='en'
 set langmenu=en
 set directory=.,$TEMP
 set autoindent
-let g:netrw_preview = 1
 set autowrite
+let g:netrw_preview=1
 
 " user command "
 cabbr <expr> %% expand("%:p:h")
@@ -87,22 +114,10 @@ command -range=% DeletePrint :<line1>,<line2>g/\<print\>/d " delete all lines wh
 
 set autoread
 
-noremap <leader>r :w! \| e $HOME/.vimrc<CR>
-noremap <leader>w :w!<CR>
-noremap <leader>e :w! \| e 
-noremap <leader>E :Explore<CR>
-noremap <leader>/ :s/\\/\//g<CR>
 noremap <leader>m :CtrlPMRUFiles<CR>
 
-"highlight current line
-nnoremap <silent> <leader>hl ml:execute 'match Search /\%'.line('.').'l/'<CR>
 "remove all hightlight
 nnoremap <silent> <leader>hc /pleasedisablehighlightthanks<CR>
-
-
-noremap <CR> o<ESC>k
-noremap <S-Enter> O<ESC>j
-
 
 "open writedown file when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -113,11 +128,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set backspace=indent,eol,start
-
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -147,3 +157,45 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
+command -nargs=* SeqThis :call SeqThis(<f-args>)
+
+function SeqThis(...)
+let n = line('.')
+let l = getline(n) 
+let j = 0
+for i in range(a:1,a:2) 
+    let nl = substitute(l,'1',i,'g')
+    call append(n+j,nl)
+    let j += 1
+endfor
+endfunction 
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
