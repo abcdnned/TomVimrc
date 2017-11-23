@@ -1,0 +1,56 @@
+# Note: Anything after a hash character (#) is a comment & is ignored by procmail.
+ 
+#### Begin Variables Section ####
+     
+# It is essential that you set SHELL to a Bourne-type shell if
+# external commands are run from your procmailrc, for example if
+# you use rc.spamassassin, rc.quarantine, or other advanced recipes.
+# Setting SHELL should not be needed for the simple sorting recipes in 
+# this step-by-step section, but to be safe and to future proof your
+# procmailrc, set it anyway! Details are in Check Your $SHELL and $PATH.
+SHELL=/bin/sh
+  
+# Directory for storing procmail configuration and log files
+# You can name this variable anything you like, for example
+# PROCMAILDIR, or don't set it (but then don't refer to it!)
+PMDIR=$HOME/Procmail
+
+# LOGFILE should be specified ASAP so everything below it is logged
+# Put ## before the next line if you want no logging (not recommended)
+LOGFILE=$PMDIR/pmlog
+  
+# To insert a blank line between each message's log entry in $LOGFILE, 
+# uncomment the next two lines (this is helpful for debugging)
+## LOG="
+## "
+  
+# Set VERBOSE to yes when debugging; VERBOSE default is no
+## VERBOSE=yes
+  
+# Replace $HOME/Msgs with the directory where your personal (non-system-spool) mailboxes reside 
+# Mailboxes in maildir format or served by Courier IMAP are often in $HOME/Maildir
+# Mailboxes served by UW IMAP are sometimes in $HOME, sometimes in $HOME/mail, & sometimes elsewhere
+# MAILDIR default is the value of $HOME
+# Make sure that $MAILDIR exists and that it is a directory!
+MAILDIR=$HOME/Mail   
+  
+# IMPORTANT:
+# * On most systems $MAILDIR is a subdirectory of $HOME
+# * Upon reading a line that contains MAILDIR=
+#     Procmail does a chdir to $MAILDIR
+#      ...and $MAILDIR becomes the Procmail working directory
+#       ...and relative paths are relative to $MAILDIR
+# * Do not include a trailing slash in your MAILDIR setting
+# * The $MAILDIR directory must exist and must be writable by your LOGNAME
+# * The MAILDIR variable is an entirely different entity from maildir mailbox format
+     
+#### End Variables Section; Begin Processing Section ####  
+  
+INCLUDERC=$PMDIR/rc.testing
+INCLUDERC=$PMDIR/rc.subscriptions
+  
+# Messages that fall through all your procmail recipes are delivered
+# to your default INBOX. To find out yours, run 'procmail -v' 
+ 
+#### End Processing Section #### 
+# EOF

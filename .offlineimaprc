@@ -1,0 +1,22 @@
+[general]
+accounts = Work
+ 
+[Account Work]
+localrepository = Local
+remoterepository = Remote
+presynchook = imapfilter
+quick = 10
+ 
+[Repository Local]
+type = Maildir
+localfolders = ~/Mail
+ 
+[Repository Remote]
+type = IMAP
+remotehost = sui.netis.com.cn
+remoteuser = tom.yang
+remotepass = yzj_184
+remoteport = 993
+ssl = yes
+cert_fingerprint = 33306c826d1bf7175bc59e12d774ae8aaf48e303
+folderfilter = lambda foldername: foldername in ["Recent"]
