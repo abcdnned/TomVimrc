@@ -60,7 +60,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "let g:jedi#rename_command="<leader>pr"
 
 " customer leader
-let mapleader="\<Space>"
+let mapleader="`"
 
 
 " Trigger configuration. Do not use <Tab> if you use https://github.com/Valloric/YouCompleteMe.
